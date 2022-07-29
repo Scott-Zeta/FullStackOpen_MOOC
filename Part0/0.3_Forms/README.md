@@ -1,0 +1,1 @@
+A simple form that will sent some data chunk by clicking button, can be viewed by dev tools in network panel. But of course it will fail :-(
