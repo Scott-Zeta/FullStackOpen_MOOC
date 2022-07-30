@@ -11,17 +11,11 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
-  const part1 = props.part1
-  const exercises1 = props.num1
-  const part2 = props.part2
-  const exercises2 = props.num2
-  const part3 = props.part3
-  const exercises3 = props.num3
   return (
     <div>
-      <Part part ={part1} num = {exercises1}/>
-      <Part part ={part2} num = {exercises2}/>
-      <Part part ={part3} num = {exercises3}/>
+      <Part part ={props.part1} num = {props.num1}/>
+      <Part part ={props.part2} num = {props.num2}/>
+      <Part part ={props.part3} num = {props.num3}/>
     </div>
   )
 }
