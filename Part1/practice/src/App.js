@@ -15,7 +15,7 @@ const Button = ({ onClick, text }) => (
 
 const App = () => {
   const [counter, setCounter] = useState({ left: 0, right: 0, up: 0, down: 0 })
-  const [route,router] = useState([])
+  const [route, router] = useState([])
   // setTimeout(
   //   () => setCounter(counter + 1),
   //   1000
@@ -88,7 +88,7 @@ const App = () => {
       <div>
         <Display counter={counter.down} />
       </div>
-      <p>{route.join("")}</p>
+      <p>{route.join(", ")}</p>
     </div>
   )
 }
