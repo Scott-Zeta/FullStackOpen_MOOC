@@ -10,9 +10,6 @@ const App = () => {
   // )
   const add = () => setCounter(counter + 1)
   const minus = () => setCounter(counter - 1)
-  const handleClick = () => {
-    console.log('clicked')
-  }
 
   console.log('rendering...', counter)
 
@@ -20,10 +17,13 @@ const App = () => {
     <div>
       {counter}
       <button onClick={add}>
-        plus
+        Plus
       </button>
       <button onClick={minus}>
-        minus
+        Minus
+      </button>
+      <button onClick={() => setCounter(0)}>
+        Reset
       </button>
       {time.toString()}
     </div>
