@@ -15,7 +15,7 @@ const Button = ({ onClick, text }) => (
 
 const App = () => {
   const [counter, setCounter] = useState({ left: 0, right: 0, up: 0, down: 0 })
-  const time = new Date();
+  const [route,router] = useState([])
   // setTimeout(
   //   () => setCounter(counter + 1),
   //   1000
@@ -27,6 +27,7 @@ const App = () => {
       right: counter.right - 1
     }
     setCounter(newCounter)
+    router(route.concat("L"))
   }
   const moveRight = () => {
     const newCounter = {
@@ -35,6 +36,7 @@ const App = () => {
       right: counter.right + 1
     }
     setCounter(newCounter)
+    router(route.concat("R"))
   }
   const moveUp = () => {
     const newCounter = {
@@ -43,6 +45,7 @@ const App = () => {
       down: counter.down - 1
     }
     setCounter(newCounter)
+    router(route.concat("U"))
   }
   const moveDown = () => {
     const newCounter = {
@@ -51,6 +54,7 @@ const App = () => {
       down: counter.down + 1
     }
     setCounter(newCounter)
+    router(route.concat("D"))
   }
   const reset = () => {
     const newCounter = {
@@ -60,6 +64,7 @@ const App = () => {
       right: 0
     }
     setCounter(newCounter)
+    router(route.splice())
   }
 
   return (
@@ -83,6 +88,7 @@ const App = () => {
       <div>
         <Display counter={counter.down} />
       </div>
+      <p>{route.join("")}</p>
     </div>
   )
 }
