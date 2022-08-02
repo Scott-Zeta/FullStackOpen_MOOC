@@ -7,11 +7,15 @@ const Display = ({ counter }) => {
   )
 }
 
-const Button = ({ onClick, text }) => (
-  <button onClick={onClick}>
-    {text}
-  </button>
-)
+const Button = (props) => {
+  const{onClick, text} = props
+  console.log(props)
+  return (
+    <button onClick={onClick}>
+      {text}
+    </button>
+  )
+}
 
 const History = (props) => {
   if (props.history.length === 0) {
@@ -103,7 +107,7 @@ const App = () => {
       <div>
         <Display counter={counter.down} />
       </div>
-      <p><History history={route} /></p>
+      <History history={route} />
     </div>
   )
 }
