@@ -13,6 +13,21 @@ const Button = ({ onClick, text }) => (
   </button>
 )
 
+const History = (props) => {
+  if (props.history.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
+  return (
+    <div>
+      button press history: {props.history.join(', ')}
+    </div>
+  )
+}
+
 const App = () => {
   const [counter, setCounter] = useState({ left: 0, right: 0, up: 0, down: 0 })
   const [route, router] = useState([])
@@ -88,7 +103,7 @@ const App = () => {
       <div>
         <Display counter={counter.down} />
       </div>
-      <p>{route.join(", ")}</p>
+      <p><History history={route} /></p>
     </div>
   )
 }
