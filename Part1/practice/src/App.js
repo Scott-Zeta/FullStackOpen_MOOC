@@ -18,7 +18,7 @@ const Button = (props) => {
 }
 
 const History = (props) => {
-  console.log(props.history)
+  console.log("array is", props.history)
   if (props.history.length === 0) {
     return (
       <div>
@@ -59,6 +59,7 @@ const App = () => {
     router(route.concat("R"))
   }
   const moveUp = () => {
+    debugger
     const newCounter = {
       ...counter,
       up: counter.up + 1,
