@@ -18,6 +18,7 @@ const Button = (props) => {
 }
 
 const History = (props) => {
+  console.log(props.history)
   if (props.history.length === 0) {
     return (
       <div>
