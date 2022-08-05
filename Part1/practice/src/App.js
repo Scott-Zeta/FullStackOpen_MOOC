@@ -60,6 +60,7 @@ const App = () => {
   }
   const moveUp = () => {
     debugger
+    console.log("UPUPUPUP")
     const newCounter = {
       ...counter,
       up: counter.up + 1,
