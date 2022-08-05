@@ -45,27 +45,46 @@ const App = () => {
     console.log(bad);
   }
 
-  return (
-    <div>
+  if (total == 0) {
+    return (
       <div>
-        <h1>give feedback</h1>
-        <Button text="good" onClick={clickGood} />
-        <Button text="neutral" onClick={clickNeutral} />
-        <Button text="bad" onClick={clickBad} />
+        <div>
+          <h1>give feedback</h1>
+          <Button text="good" onClick={clickGood} />
+          <Button text="neutral" onClick={clickNeutral} />
+          <Button text="bad" onClick={clickBad} />
+        </div>
+        <div>
+          <h1>statistics</h1>
+          <p>
+            No feedback given
+          </p>
+        </div>
       </div>
+    )
+  } else {
+    return (
       <div>
-        <h1>statistics</h1>
-        <p>
-          <Statistics indicate="good" count={good} />
-          <Statistics indicate="neutral" count={neutral} />
-          <Statistics indicate="bad" count={bad} />
-          <Statistics indicate="all" count={total} />
-          <Statistics indicate="average" count={average} />
-          <Statistics indicate="positive" count={positive} />
-        </p>
+        <div>
+          <h1>give feedback</h1>
+          <Button text="good" onClick={clickGood} />
+          <Button text="neutral" onClick={clickNeutral} />
+          <Button text="bad" onClick={clickBad} />
+        </div>
+        <div>
+          <h1>statistics</h1>
+          <p>
+            <Statistics indicate="good" count={good} />
+            <Statistics indicate="neutral" count={neutral} />
+            <Statistics indicate="bad" count={bad} />
+            <Statistics indicate="all" count={total} />
+            <Statistics indicate="average" count={average} />
+            <Statistics indicate="positive" count={positive} />
+          </p>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default App
