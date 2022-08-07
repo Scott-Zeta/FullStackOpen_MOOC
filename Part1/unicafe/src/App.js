@@ -8,7 +8,7 @@ const Button = ({ onClick, text }) => {
   )
 }
 
-const Statistics = ({ indicate, count }) => {
+const StatisticLine = ({ indicate, count }) => {
   if (indicate == "positive") {
     return (<>{indicate} {count} %<br></br></>)
   } else {
@@ -16,6 +16,37 @@ const Statistics = ({ indicate, count }) => {
       <>{indicate} {count}<br></br></>
     )
   }
+}
+
+const Statistics = ({ good, neutral, bad, total, average, positive }) => {
+  if (total == 0) {
+    return (
+      <p>
+        No feedback given
+      </p>
+    )
+  } else {
+    return (
+      <p>
+        <StatisticLine indicate="good" count={good} />
+        <StatisticLine indicate="neutral" count={neutral} />
+        <StatisticLine indicate="bad" count={bad} />
+        <StatisticLine indicate="all" count={total} />
+        <StatisticLine indicate="average" count={average} />
+        <StatisticLine indicate="positive" count={positive} />
+      </p>
+    )
+  }
+}
+
+const ButtonGroup = ({ clickGood, clickNeutral, clickBad }) => {
+  return (
+    <>
+      <Button text="good" onClick={clickGood} />
+      <Button text="neutral" onClick={clickNeutral} />
+      <Button text="bad" onClick={clickBad} />
+    </>
+  )
 }
 
 const App = () => {
@@ -45,46 +76,19 @@ const App = () => {
     console.log(bad);
   }
 
-  if (total == 0) {
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          <h1>give feedback</h1>
-          <Button text="good" onClick={clickGood} />
-          <Button text="neutral" onClick={clickNeutral} />
-          <Button text="bad" onClick={clickBad} />
-        </div>
-        <div>
-          <h1>statistics</h1>
-          <p>
-            No feedback given
-          </p>
-        </div>
+        <h1>give feedback</h1>
+        <ButtonGroup clickGood={clickGood} clickNeutral={clickNeutral} clickBad={clickBad} />
       </div>
-    )
-  } else {
-    return (
       <div>
-        <div>
-          <h1>give feedback</h1>
-          <Button text="good" onClick={clickGood} />
-          <Button text="neutral" onClick={clickNeutral} />
-          <Button text="bad" onClick={clickBad} />
-        </div>
-        <div>
-          <h1>statistics</h1>
-          <p>
-            <Statistics indicate="good" count={good} />
-            <Statistics indicate="neutral" count={neutral} />
-            <Statistics indicate="bad" count={bad} />
-            <Statistics indicate="all" count={total} />
-            <Statistics indicate="average" count={average} />
-            <Statistics indicate="positive" count={positive} />
-          </p>
-        </div>
+        <h1>statistics</h1>
+        <Statistics good={good} neutral={neutral} bad={bad} total={total} average={average} positive={positive} />
       </div>
-    )
-  }
+    </div>
+  )
+
 }
 
 export default App
