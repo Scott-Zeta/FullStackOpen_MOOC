@@ -9,7 +9,7 @@ const Button = ({ onClick, text }) => {
 }
 
 const StatisticLine = ({ indicate, count }) => {
-  if (indicate == "positive") {
+  if (indicate === "positive") {
     return (
       <tr>
         <td>{indicate}</td>
@@ -29,7 +29,7 @@ const StatisticLine = ({ indicate, count }) => {
 }
 
 const Statistics = ({ good, neutral, bad, total, average, positive }) => {
-  if (total == 0) {
+  if (total === 0) {
     return (
       <p>
         No feedback given
