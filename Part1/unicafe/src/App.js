@@ -10,10 +10,20 @@ const Button = ({ onClick, text }) => {
 
 const StatisticLine = ({ indicate, count }) => {
   if (indicate == "positive") {
-    return (<>{indicate} {count} %<br></br></>)
+    return (
+      <tr>
+        <td>{indicate}</td>
+        <td>{count} %</td>
+      </tr>
+      //<>{indicate} {count} %<br></br></>
+    )
   } else {
     return (
-      <>{indicate} {count}<br></br></>
+      <tr>
+        <td>{indicate}</td>
+        <td>{count}</td>
+      </tr>
+      //<>{indicate} {count}<br></br></>
     )
   }
 }
@@ -27,14 +37,16 @@ const Statistics = ({ good, neutral, bad, total, average, positive }) => {
     )
   } else {
     return (
-      <p>
-        <StatisticLine indicate="good" count={good} />
-        <StatisticLine indicate="neutral" count={neutral} />
-        <StatisticLine indicate="bad" count={bad} />
-        <StatisticLine indicate="all" count={total} />
-        <StatisticLine indicate="average" count={average} />
-        <StatisticLine indicate="positive" count={positive} />
-      </p>
+      <table>
+        <tbody>
+          <StatisticLine indicate="good" count={good} />
+          <StatisticLine indicate="neutral" count={neutral} />
+          <StatisticLine indicate="bad" count={bad} />
+          <StatisticLine indicate="all" count={total} />
+          <StatisticLine indicate="average" count={average} />
+          <StatisticLine indicate="positive" count={positive} />
+        </tbody>
+      </table>
     )
   }
 }
