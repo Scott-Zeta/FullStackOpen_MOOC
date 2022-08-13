@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import './App.css';
 
-function App() {
+const Button = ({ onClick, text }) => {
+  return (
+    <button onClick={onClick}>
+      {text}
+    </button>)
+}
+
+const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -11,14 +18,19 @@ function App() {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
-   
+
   const [selected, setSelected] = useState(0)
+  const selectRandom = () =>{
+    let random = Math.floor(Math.random() * anecdotes.length);
+    console.log(random);
+    setSelected(random);
+  }
 
   return (
     <div>
-      {anecdotes[selected]}
+      {anecdotes[selected]} <br></br>
+      <Button text = "next anecdote" onClick={selectRandom}/>
     </div>
   )
 }
-
 export default App;
