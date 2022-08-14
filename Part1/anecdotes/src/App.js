@@ -22,40 +22,22 @@ const ShowMost = ({anecdotes, points}) => {
   } else {
     return (
       <div>
-        <p>{anecdotes[maxVoteIndex]}</p>
-        <p>{points[maxVoteIndex]}</p>
+        <p>{anecdotes[maxVoteIndex]}<br></br>
+        has {points[maxVoteIndex]} votes</p>
       </div>
     );
   }
 }
 
-const Winner = ({anecdotes, allVotes}) => {
-  const highestVoteCount = Math.max(...allVotes)
-  const winnerIndex = allVotes.indexOf(highestVoteCount)
-  const winner = anecdotes[winnerIndex]
-  if (highestVoteCount === 0) {
-    return (
-      <p>No votes yet</p>
-    )
-  }
-
-  return (
-    <div>
-      <p>{winner}</p>
-      <p>has {highestVoteCount} votes</p>
-    </div>
-  )
-}
-
 const App = () => {
   const anecdotes = [
-    '0. If it hurts, do it more often.',
-    '1. Adding manpower to a late software project makes it later!',
-    '2. The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
-    '3. Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
-    '4. Premature optimization is the root of all evil.',
-    '5. Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
-    '6. Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
+    'If it hurts, do it more often.',
+    'Adding manpower to a late software project makes it later!',
+    'The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
+    'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
+    'Premature optimization is the root of all evil.',
+    'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
+    'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
 
   const [point, setPoint] = useState(Array(anecdotes.length).fill(0));
@@ -87,8 +69,7 @@ const App = () => {
       <Button text="vote" onClick={vote} />
       <Button text="next anecdote" onClick={selectRandom} />
       <h1>Anecdote with the most votes</h1>
-      {/* <ShowMost anecdotes={anecdotes} points={point} /> */}
-      <Winner anecdotes={anecdotes} allVotes={point} />
+      <ShowMost anecdotes={anecdotes} points={point} />
     </div>
   )
 }
