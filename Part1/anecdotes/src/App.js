@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 
+
 const Button = ({ onClick, text }) => {
   return (
     <button onClick={onClick}>
@@ -68,12 +69,14 @@ const App = () => {
   }
 
   const vote = () => {
-    const newPoint = {
-      ...point,
-      [selected]: point[selected] + 1
-    }
+    // const newPoint = {
+    //   ...point,
+    //   [selected]: point[selected] + 1
+    // }
+    const newPoint = [...point]
+    newPoint[selected] += 1
     setPoint(newPoint);
-    //console.log(newPoint);
+    console.log(newPoint);
   }
 
   return (
