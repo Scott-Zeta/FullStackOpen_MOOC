@@ -9,14 +9,19 @@ function App() {
   { name: "E", species: "fish" }
   ];
 
-  const isDog = function (animal) {
+  // const isDog = function (animal) {
+  //   return animal.species === 'dog'
+  // }
+
+  const dog = animals.filter(function (animal) {
     return animal.species === 'dog'
-  }
-
-  const dog = animals.filter(isDog);
-
-  //console.log(isDog);
+  });
   console.log(dog);
+
+  const names = animals.map(function (animals){
+    return animals.name;
+  })
+  console.log(names);
 
   return (
     <div className="App">
