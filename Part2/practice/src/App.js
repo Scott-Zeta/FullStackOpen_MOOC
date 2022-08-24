@@ -1,5 +1,5 @@
 import './App.css';
-import Note from './components/Note'
+import Note from './components/Note.js'
 
 function App(props) {
   const { notes } = props
