@@ -1,4 +1,5 @@
 import './App.css';
+import Note from './components/Note'
 
 function App(props) {
   const { notes } = props
@@ -36,9 +37,8 @@ function App(props) {
         <li>{notes[1].content}</li>
         <li>{notes[2].content}</li> */}
         {notes.map(note =>
-          <li key={note.id}>
-            {note.content}
-          </li>)}
+          <Note key={note.id} note={note} />
+        )}
       </ul>
     </div>
   )
