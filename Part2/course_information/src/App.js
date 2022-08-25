@@ -1,59 +1,72 @@
-const Header = (props) => {
-  console.log(props.course.name)
-  return (
-    <h1>{props.course.name}</h1>
-  )
-}
+const Header = ({ course }) => <h1>{course}</h1>
 
-const Part = (props) => {
-  return (
-    <p>{props.part} {props.num}</p>
-  )
-}
+const Total = ({ sum }) => <p>Number of exercises {sum}</p>
 
-const Content = (props) => {
-  console.log(props.course.parts)
-  return (
+const Part = ({ part }) => 
+  <p>
+    {part.name} {part.exercises}
+  </p>
+
+const Content = ({ parts }) => 
+  <>
+    <Part
+      part={parts[0]} 
+    />
+    <Part
+      part={parts[1]} 
+    />
+    <Part
+      part={parts[2]} 
+    />      
+  </>
+
+const Course = ({course}) =>{
+  console.log(course)
+  const header = course.name
+  const part = course.parts.map(part => part.name)
+  const exercises = course.parts.map(part => part.exercises)
+  console.log(part)
+  console.log(exercises)
+
+  return(
     <div>
-      <Part part={props.course.parts[0].name} num={props.course.parts[0].exercises} />
-      <Part part={props.course.parts[1].name} num={props.course.parts[1].exercises} />
-      <Part part={props.course.parts[2].name} num={props.course.parts[2].exercises} />
+    <h1>{header}</h1>
+    {course.parts.map(part =>
+      <Parts key = {part.id} name = {part.name} exercises = {part.exercises} />)}  
     </div>
   )
 }
 
-const Total = (props) => {
-  return (
-    <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
+const Parts = ({name, exercises}) =>{
+  return(
+    <p>{name} {exercises}</p>
   )
 }
 
 const App = () => {
   const course = {
+    id: 1,
     name: 'Half Stack application development',
     parts: [
       {
         name: 'Fundamentals of React',
-        exercises: 10
+        exercises: 10,
+        id: 1
       },
       {
         name: 'Using props to pass data',
-        exercises: 7
+        exercises: 7,
+        id: 2
       },
       {
         name: 'State of a component',
-        exercises: 14
+        exercises: 14,
+        id: 3
       }
     ]
   }
 
-  return (
-    <div>
-      <Header course={course} />
-      <Content course={course} />
-      <Total course={course} />
-    </div>
-  )
+  return <Course course={course} />
 }
 
-export default App;
+export default App
