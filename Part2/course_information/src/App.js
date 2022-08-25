@@ -25,8 +25,9 @@ const Course = ({course}) =>{
   const header = course.name
   const part = course.parts.map(part => part.name)
   const exercises = course.parts.map(part => part.exercises)
-  console.log(part)
-  console.log(exercises)
+  const total = course.parts.reduce((sum,part) => console.log('what is happening', sum, part),0)
+  // console.log(part)
+  // console.log(exercises)
 
   return(
     <div>
