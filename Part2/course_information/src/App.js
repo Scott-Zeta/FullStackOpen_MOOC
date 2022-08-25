@@ -71,6 +71,22 @@ const App = () => {
           id: 2
         }
       ]
+    },
+    {
+      name: 'Containernize',
+      id: 3,
+      parts: [
+        {
+          name: 'Terminal',
+          exercises: 6,
+          id: 1
+        },
+        {
+          name: 'Docker',
+          exercises: 10,
+          id: 2
+        }
+      ]
     }
   ]
 
