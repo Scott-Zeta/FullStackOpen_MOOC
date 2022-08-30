@@ -3,11 +3,20 @@ import Note from './components/Note'
 
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes)
-  const [newNote, setNewNote] = useState("new note...")
+  const [newNote, setNewNote] = useState("new note place holder")
 
   const addNote = (event) => {
     event.preventDefault()
-    console.log('button clicked', event.target)
+    const noteObject = {
+      content: newNote,
+      date: new Date().toISOString(),
+      important: Math.random() < 0.5, //randomly true or false
+      id: notes.length + 1,
+    }
+
+    console.log(noteObject)
+    setNotes(notes.concat(noteObject)) // concat the new note behind the old version
+    setNewNote("")//clear the new note builder, clean the input form
   }
 
   const handleNoteChange = (event) =>{
