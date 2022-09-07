@@ -6,6 +6,9 @@ const App = (props) => {
   const [newNote, setNewNote] = useState("new note place holder") //this is actually not a appropriate way for palce holder
   const [showAll, setShowAll] = useState(true)
 
+  const notesToShow = showAll ? notes : notes.filter(note => note.important === true)
+  //a if else statement, condition showAll?, if true, all notes, if false, notes with filter
+
   const addNote = (event) => {
     event.preventDefault() //prevent refresh page in old way
     //new note object
@@ -29,6 +32,12 @@ const App = (props) => {
   return (
     <div>
       <h1>Notes</h1>
+      <div>
+        <button onClick = {() => setShowAll(!showAll)}> 
+          Show {showAll ? 'important': 'all'}
+          {/* with click, the 'showAll' variable will change, then so the button's name */}
+        </button>
+      </div>
       <ul>
         {notes.map(note =>
           <Note key={note.id} note={note} />
