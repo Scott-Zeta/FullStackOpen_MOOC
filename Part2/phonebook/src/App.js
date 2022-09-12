@@ -13,19 +13,16 @@ const App = () => {
   }
   const onChange = (event) =>{
     console.log("changing: ", event.target.value)
-    setNewName(event.target.value);
+    setNewName(event.target.value)
   }
 
-
+  
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
-        <div onSubmit={addName}>
-          name: <input 
-          value={newName}
-          onChange={onChange}
-          />
+      <form onSubmit={addName}>
+        <div>
+          name: <input value={newName} onChange={onChange}/>
         </div>
         <div>
           <button type="submit">add</button>
