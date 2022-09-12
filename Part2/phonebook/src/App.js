@@ -10,6 +10,12 @@ const App = () => {
 
   const addName = (event) =>{
     event.preventDefault()
+    const name = {
+      name: newName
+    }
+
+    setPersons(persons.concat(name)) //concat the new name behind exsit
+    setNewName("") //clear the input box
   }
   const onChange = (event) =>{
     console.log("changing: ", event.target.value)
