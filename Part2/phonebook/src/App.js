@@ -13,13 +13,28 @@ const App = () => {
     const name = {
       name: newName
     }
-
+    if(Duplicate(name.name) === false){
     setPersons(persons.concat(name)) //concat the new name behind exsit
     setNewName("") //clear the input box
+    }else{
+      alert(name.name + "is already added to phonebook!")
+    }
   }
   const onChange = (event) =>{
-    console.log("changing: ", event.target.value)
+    //console.log("changing: ", event.target.value)
     setNewName(event.target.value)
+  }
+  
+  const Duplicate = (check) =>{
+    for(let i = 0; i < persons.length; i++){
+      console.log(persons[i].name)
+      if(persons[i].name === check){
+        console.log("true")
+        return true;
+      }
+    }
+    console.log("false")
+    return false;
   }
 
   

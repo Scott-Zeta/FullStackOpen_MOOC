@@ -2,7 +2,7 @@ import React from 'react'
 import Person from './Person';
 
 const Content = ({persons}) =>{
-console.log(persons.length)
+// console.log(persons.length)
 
 return(
     <ul>
