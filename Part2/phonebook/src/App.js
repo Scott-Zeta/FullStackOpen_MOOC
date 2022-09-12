@@ -8,12 +8,24 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
 
+  const addName = (event) =>{
+    event.preventDefault()
+  }
+  const onChange = (event) =>{
+    console.log("changing: ", event.target.value)
+    setNewName(event.target.value);
+  }
+
+
   return (
     <div>
       <h2>Phonebook</h2>
       <form>
-        <div>
-          name: <input />
+        <div onSubmit={addName}>
+          name: <input 
+          value={newName}
+          onChange={onChange}
+          />
         </div>
         <div>
           <button type="submit">add</button>
