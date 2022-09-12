@@ -20,7 +20,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-        <Content />
+        <Content persons={persons} />
     </div>
   )
 }
