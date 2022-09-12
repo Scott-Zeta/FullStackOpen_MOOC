@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react';
+import { useState } from 'react';
+import Content from './components/Content';
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ]) 
+    { name: 'Arto Hellas' }, { name: 'Scott Zeta' }
+  ])
   const [newName, setNewName] = useState('')
 
   return (
@@ -20,7 +20,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      ...
+        <Content />
     </div>
   )
 }
