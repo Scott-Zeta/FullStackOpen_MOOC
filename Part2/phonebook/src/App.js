@@ -4,10 +4,14 @@ import Content from './components/Content';
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }, { name: 'Scott Zeta' }
+    { name: 'Arto Hellas', number: '040-123456', id: 1 },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNumber] = useState('')
+  const [show, setShow] = useState('')
 
   const addName = (event) =>{
     event.preventDefault()
@@ -24,12 +28,15 @@ const App = () => {
     }
   }
   const onChange = (event) =>{
-    //console.log("changing: ", event.target.value)
     setNewName(event.target.value)
   }
   const numOnChange = (event) =>{
     setNumber(event.target.value)
   }
+  const showOnChange = (event) =>{
+    setShow(event.target.value)
+  }
+
   
   const Duplicate = (check) =>{
     for(let i = 0; i < persons.length; i++){
@@ -47,6 +54,10 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        filter shown with <input value={show} onChange={showOnChange}/>
+      </div>
+      <h2>add a new</h2>
       <form onSubmit={addName}>
         <div>
           name: <input value={newName} onChange={onChange}/><br></br>
@@ -57,7 +68,8 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-        <Content persons={persons} />
+      {console.log(show)}
+        <Content persons={persons} filter={show} />
     </div>
   )
 }
