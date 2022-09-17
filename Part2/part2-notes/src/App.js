@@ -7,16 +7,20 @@ const App = () => {
   const [newNote, setNewNote] = useState("new note place holder") //this is actually not a appropriate way for palce holder
   const [showAll, setShowAll] = useState(true)
 
-  useEffect(() => {
+  const hook = () => {
     console.log('effect')
+    
+    const evenHandler = response => {
+      console.log('promise fulfilled')
+      setNotes(response.data)
+    }
     axios
       .get('http://localhost:3001/notes')
-      .then(response => {
-        console.log('promise fulfilled')
-        setNotes(response.data)
-      })
-  }, [])  //get notes from the server
-  console.log('render', notes.length, 'notes')  
+      .then(evenHandler)
+  } //get notes from the server
+
+  useEffect(hook, [])
+  console.log('render', notes.length, 'notes') //render two times, first without notes data, second with notes 
 
   const notesToShow = showAll ? notes : notes.filter(note => note.important === true)
   //a if else statement, condition showAll?, if true, all notes, if false, notes with filter
