@@ -54,12 +54,13 @@ const App = () => {
   const toggleImportance = (id) => {
     console.log('importance of ' + id + 'needs to be toggled')
 
-    const url = `http://localhost:3001/notes/${id}` //use ` not ' (I don't know fucking why!)
+    const url = `http://localhost:3001/notes/${id}` //use ` not ' or 404 not found(I don't know fucking why!)
     const note = notes.find(n => n.id === id)
     const changedNote = { ...note, important: !note.important }
 
     axios.put(url, changedNote).then(response => {
-      setNotes(notes.map(n => n.id !== id ? n : response.data))
+      setNotes(notes.map(n => n.id !== id ? n : response.data))//use map to subsitute the old notes, 
+      //if id not same, assign to itself(skip), if it is, assign to new notes
     })
   } ///!! important
 
