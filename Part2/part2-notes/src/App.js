@@ -9,7 +9,7 @@ const App = () => {
 
   const hook = () => {
     console.log('effect')
-    
+
     const evenHandler = response => {
       console.log('promise fulfilled')
       setNotes(response.data)
@@ -35,9 +35,15 @@ const App = () => {
       id: notes.length + 1,
     }
 
-    console.log(noteObject, event.target) //event.target is the target the event has been excuted on
-    setNotes(notes.concat(noteObject)) // concat the new note behind the old notes
-    setNewNote("")//clear the new note builder, clean the input form after submmit
+    axios.post('http://localhost:3001/notes', noteObject)
+      .then(response => {
+        console.log(response)
+        setNotes(notes.concat(noteObject)) // concat the new note behind the old notes
+        setNewNote("")//clear the new note builder, clean the input form after submmit
+      }) //the notes won't disappear when refreshing
+
+    //console.log(noteObject, event.target) //event.target is the target the event has been excuted on
+
   }
 
   const handleNoteChange = (event) => { //handle the change in the input box
@@ -49,8 +55,8 @@ const App = () => {
     <div>
       <h1>Notes</h1>
       <div>
-        <button onClick = {() => setShowAll(!showAll)}> 
-          Show {showAll ? 'important': 'all'}
+        <button onClick={() => setShowAll(!showAll)}>
+          Show {showAll ? 'important' : 'all'}
           {/* with click, the 'showAll' variable will change, then so the button's name */}
         </button>
       </div>
@@ -60,7 +66,7 @@ const App = () => {
         )}
         {/* a conditional filter notesToShow before the map */}
       </ul>
-      <form onSubmit={addNote}> 
+      <form onSubmit={addNote}>
         <input
           value={newNote}
           onChange={handleNoteChange} //handle the change in the input box
