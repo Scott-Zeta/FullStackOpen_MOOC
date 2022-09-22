@@ -38,7 +38,7 @@ const App = () => {
     axios.post('http://localhost:3001/notes', noteObject)
       .then(response => {
         console.log(response)
-        setNotes(notes.concat(noteObject)) // concat the new note behind the old notes
+        setNotes(notes.concat(response.data)) // concat the new note behind the old notes
         setNewNote("")//clear the new note builder, clean the input form after submmit
       }) //the notes won't disappear when refreshing
 
