@@ -19,8 +19,8 @@ const App = () => {
     //   .get('http://localhost:3001/notes')    // was refactored
     //   .then(eventHandler)
     noteService.getAll()
-      .then(response => {
-        setNotes(response.data)
+      .then(initalNotes => {
+        setNotes(initalNotes)
       })
   } //get notes from the server
 
@@ -49,8 +49,8 @@ const App = () => {
 
     //console.log(noteObject, event.target) //event.target is the target the event has been excuted on
     noteService.create(noteObject)
-      .then(response => {
-        setNotes(notes.concat(response.data))
+      .then(returnedNode => {
+        setNotes(notes.concat(returnedNode))
         setNewNote('')
       })
   }
@@ -72,8 +72,8 @@ const App = () => {
     //   //if id not same, assign to itself(skip), if it is, assign to new notes
     // })
     noteService.update(id, changedNote)
-      .then(response => {
-        setNotes(notes.map(note => note.id !== id ? note : response.data))
+      .then(returnedNode => {
+        setNotes(notes.map(note => note.id !== id ? note : returnedNode))
       })
   } ///!! important
 
