@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Note from './components/Note'
 import noteService from './services/notes'
+import Notification from './components/Notification'
+import Footer from './components/Footer'
 
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState("new note place holder") //this is actually not a appropriate way for palce holder
   const [showAll, setShowAll] = useState(true)
+  const [errorMessage, setErrorMessage] = useState("")
 
   const hook = () => {
     // console.log('effect')
@@ -76,7 +79,9 @@ const App = () => {
         setNotes(notes.map(note => note.id !== id ? note : returnedNode))
       })
       .catch(error => {
-        alert(`the note '${note.content}' has already been deleted on server!`) ///watch out for ` and ' !!!!!
+        //alert(`the note '${note.content}' has already been deleted on server!`) ///watch out for ` and ' !!!!!
+        setErrorMessage(`the note '${note.content}' has already been deleted on server!`)
+        setTimeout(()=>{setErrorMessage(null)},5000)
         setNotes(notes.filter(n => n.id !== id))
       })
   } ///!! important
@@ -84,6 +89,7 @@ const App = () => {
   return (
     <div>
       <h1>Notes</h1>
+      <Notification message={errorMessage} />
       <div>
         <button onClick={() => setShowAll(!showAll)}>
           Show {showAll ? 'important' : 'all'}
@@ -103,6 +109,7 @@ const App = () => {
         />
         <button type="submit">Save</button>
       </form>
+      <Footer />
     </div>
   )
 }
