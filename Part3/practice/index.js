@@ -51,8 +51,12 @@ app.delete('/api/notes/:id', (request, response) => {
 })
 
 app.post('/api/notes', (request, response) => {
+    const maxId = notes.length > 0 ? Math.max(...notes.map(n => n.id)) : 0 //get current id, this is really fucking horrible
     const note = request.body
-    console.log(note)
+    note.id = maxId + 1
+    
+    notes = notes.concat(note)
+
     response.json(note)
 })
 
