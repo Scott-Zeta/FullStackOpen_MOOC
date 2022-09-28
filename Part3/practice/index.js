@@ -2,7 +2,7 @@ const { response } = require('express')
 const express = require('express')
 const app = express()
 
-app.use(express.json())
+app.use(express.json()) //the middleware(json-parser)S
 
 let notes = [
     {
