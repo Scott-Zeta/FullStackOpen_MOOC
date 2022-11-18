@@ -33,6 +33,8 @@ const App = () => {
       alert(name.name + " is already added to phonebook!")
     }
   }
+
+  //onChange varibales function for each input box.
   const onChange = (event) => {
     setNewName(event.target.value)
   }
@@ -47,12 +49,12 @@ const App = () => {
   const Duplicate = (check) => {
     for (let i = 0; i < persons.length; i++) {
       if (persons[i].name === check.name) {
-        console.log(check)
-        console.log("true")
+        // console.log(check)
+        // console.log("true")
         return true;
       }
     }
-    console.log("false")
+    // console.log("false")
     return false;
   }
 
@@ -72,7 +74,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      {console.log(show)}
+      {/* {console.log(show)} */}
       <Content persons={persons} filter={show} />
     </div>
   )
