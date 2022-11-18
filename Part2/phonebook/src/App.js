@@ -10,13 +10,18 @@ const App = () => {
   const [newNumber, setNumber] = useState('')
   const [show, setShow] = useState('')
 
+  //use effect hook and the axios get function,
+  //sequence can not be changed
+  //or put the hook inside the useEffect
   const hook = () =>{
+    //event handler set the response get from axios as the usestate of persons
     const eventHandler = (response) =>{
       setPersons(response.data)
     }
+    //first get, then excute the eventhandler, sequence ristricted
+    //shit, I hate these variables name and the brackets
     axios.get('http://localhost:3001/persons').then(eventHandler)
   }
-
   useEffect(hook, [])
 
   const addName = (event) => {
