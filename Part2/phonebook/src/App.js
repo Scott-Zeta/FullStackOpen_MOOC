@@ -15,13 +15,23 @@ const App = () => {
   //or put the hook inside the useEffect
   const hook = () =>{
     //event handler set the response get from axios as the usestate of persons
-    const eventHandler = (response) =>{
-      setPersons(response.data)
-    }
+    
+    // const eventHandler = (response) =>{
+    //   setPersons(response.data)
+    // }
+    
     //first get, then excute the eventhandler, sequence ristricted
     //shit, I hate these variables name and the brackets
-    axios.get('http://localhost:3001/persons').then(eventHandler)
+    axios.get('http://localhost:3001/persons')
+      .then(response =>{
+      setPersons(response.data)
+    })
+    //no, you don't need so many variables, remove that stupid eventHandler off
+    //attach it in then().
   }
+
+  //sencond parameter, [] is for how often effect is run.
+  //with [], only run algong with the first render of the component.
   useEffect(hook, [])
 
   const addName = (event) => {
