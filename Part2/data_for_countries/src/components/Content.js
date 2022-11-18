@@ -18,10 +18,16 @@ const Content = ({ countries, filter }) => {
       </p>
     )
   } else if ((countries.length < 10 && countries.length > 2) || countries.length === 0) {
+    //fucking hell, there are ten million brackets in here
     return (
-      <ul>
-        {countries.map((c, i) => <li key={i}>{c.name.common}</li>)}
-      </ul>)
+      <div>
+        {countries.map((c, i) => {
+          return (
+            <div key={i}>{c.name.common} <button>show</button></div>
+          )
+        })
+        }
+      </div>)
   } else {
     return (
       <Country country={countries[0]} />
