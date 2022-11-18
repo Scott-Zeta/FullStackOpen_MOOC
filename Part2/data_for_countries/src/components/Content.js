@@ -2,7 +2,7 @@ import React from "react";
 import Country from "./Country";
 
 const Content = ({ countries, filter }) => {
-  console.log(countries);
+  // console.log(countries);
   if (filter === "") {
     return (
       <p>
@@ -23,7 +23,7 @@ const Content = ({ countries, filter }) => {
       <div>
         {countries.map((c, i) => {
           return (
-            <div key={i}>{c.name.common} <button>show</button></div>
+            <div key={i}>{c.name.common} <button onClick={() => console.log("click show")}>show</button></div>
           )
         })
         }
